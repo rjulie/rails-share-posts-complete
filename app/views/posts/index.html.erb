@@ -1,1 +1,13 @@
 <h1>All posts</h1>
+
+
+<% @posts.each do |post|%>
+  <%= link_to post_path(post) do %>
+    <div class="card-product">
+      <div class="post-card-index card-product-infos">
+        <h2><%= post.title %></h2>
+        <p><%= post.content %></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
