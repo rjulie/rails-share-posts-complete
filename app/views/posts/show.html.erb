@@ -1,1 +1,18 @@
-<h1>Show</h1>
+
+
+
+
+
+<div class="card text-center mx-4">
+  <div class="card-header">
+    posted by <%= @post.user.nickname %>
+  </div>
+  <div class="card-body">
+    <h1 class="card-title"><%= @post.title %></h1>
+    <p class="card-text"><%= @post.content %></p>
+    <a href="<%= @post.url %>" class="btn btn-primary">Go there</a>
+  </div>
+  <div class="card-footer text-muted">
+    <%= time_ago_in_words(@post.created_at) %>
+  </div>
+</div>
