@@ -1,18 +1,31 @@
-
-
-
-
-
+<%# post card %>
 <div class="card text-center mx-4">
   <div class="card-header">
     posted by <%= @post.user.nickname %>
   </div>
   <div class="card-body">
-    <h1 class="card-title"><%= @post.title %></h1>
+    <h1 class="card-title"><%= @post.title.capitalize %></h1>
     <p class="card-text"><%= @post.content %></p>
     <a href="<%= @post.url %>" class="btn btn-primary">Go there</a>
   </div>
   <div class="card-footer text-muted">
-    <%= time_ago_in_words(@post.created_at) %>
+    <p><%= time_ago_in_words(@post.created_at) %> ago</p>
   </div>
 </div>
+
+<%# comments card %>
+<div>
+  <div>
+  <% @post.comments.each do |comment| %>
+    <div>
+      <p><%= comment.content.capitalize %></p>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<%# new comment %>
+<%= simple_form_for [ @post, @comment ] do |f| %>
+  <%= f.input :content, label: 'Comment', placeholder: 'Add a comment...' %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
