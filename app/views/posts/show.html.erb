@@ -12,8 +12,7 @@
     <p><%= time_ago_in_words(@post.created_at) %> ago</p>
     <%= link_to 'Edit', edit_post_path %>
     <%# destroy method to fixed %>
-    <%= link_to 'Destroy', post_path,
-            data: {:confirm => 'Are you sure?'}, :method => :delete %>
+    <%=  link_to 'Delete', post_path(current_user), data: { confirm: 'Are you sure?' }, method: :delete %>
   </div>
 </div>
 

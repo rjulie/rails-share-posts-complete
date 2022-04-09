@@ -35,10 +35,11 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    @comment = Comment.find(params[:id])
     @post.destroy
-    redirect_to post_path(@post)
+    @comment.destroy
+    redirect_to post_path
   end
-
 
   private
 
