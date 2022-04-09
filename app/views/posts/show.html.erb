@@ -27,5 +27,7 @@
 <%# new comment %>
 <%= simple_form_for [ @post, @comment ] do |f| %>
   <%= f.input :content, label: 'Comment', placeholder: 'Add a comment...' %>
+  <%= f.input :post_id, as: :hidden, input_html: { value: @post.id } %>
+  <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>

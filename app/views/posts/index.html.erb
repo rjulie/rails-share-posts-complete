@@ -1,5 +1,6 @@
 <h1>All posts</h1>
 
+<%# Index %>
 <div class="d-flex flex-column">
   <% @posts.each do |post|%>
     <%= link_to post_path(post) do %>
@@ -11,4 +12,12 @@
       </div>
     <% end %>
   <% end %>
+</div>
+
+<%# New button %>
+<div>
+  <button type="button" class="btn btn-primary rounded-circle btn-new" data-bs-toggle="modal" data-bs-target="#my-modal">
+    <strong>+</strong>
+  </button>
+  <%= render "shared/modal" %>
 </div>
