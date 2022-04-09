@@ -1,0 +1,7 @@
+<%= simple_form_for @post do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.input :url %>
+  <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>
