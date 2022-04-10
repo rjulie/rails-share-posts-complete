@@ -35,8 +35,10 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    @comment = @post.comments.where(post_id: @post.id)
+    @comment.each(&:destroy)
     @post.destroy
-    redirect_to posts_path, :notice => "Your post has been deleted successfully."
+    redirect_to posts_path, notice: "Your post has been deleted successfully."
   end
 
   private
@@ -46,6 +48,6 @@ class PostsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:post_id)
+    params.require(:comment).permit(:content, :user_id, :post_id)
   end
 end
