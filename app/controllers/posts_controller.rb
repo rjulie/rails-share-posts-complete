@@ -14,7 +14,7 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       render :new
-      # render modal to fix
+      # render modal instead of new to fix
     end
   end
 
@@ -35,15 +35,17 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @comment = Comment.find(params[:id])
     @post.destroy
-    @comment.destroy
-    redirect_to post_path
+    redirect_to posts_path, :notice => "Your post has been deleted successfully."
   end
 
   private
 
   def post_params
     params.require(:post).permit(:title, :content, :url, :user_id)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:post_id)
   end
 end
