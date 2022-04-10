@@ -12,9 +12,8 @@
     <p><%= time_ago_in_words(@post.created_at) %> ago</p>
     <div class="btn">
         <% if @post.user == current_user %>
-          <%= link_to 'Edit', edit_post_path, class: "btn btn-ghost"%>
-          <%# button delete working but still need to delete comments associated  %>
-         <%= link_to 'Delete post', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Edit', edit_post_path, class: "btn btn-ghost"%>
+        <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
       </div>
   </div>
